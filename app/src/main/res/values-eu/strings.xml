@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Practica1</string>
+    <string name="titulo">Izenburua:</string>
+    <string name="editorial">Editoriala:</string>
+    <string name="autor">Egilea:</string>
+</resources>

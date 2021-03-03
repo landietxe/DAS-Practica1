@@ -10,11 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ViewHolder extends RecyclerView.ViewHolder {
     public TextView eltexto;
     public ImageView laimagen;
+    public TextView autores;
+    public TextView editorial;
 
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
         eltexto = itemView.findViewById(R.id.libro_titulo);
         laimagen = itemView.findViewById(R.id.libro_imagen);
+        autores = itemView.findViewById(R.id.libro_autor);
+        editorial = itemView.findViewById(R.id.libro_editorial);
 
     }
 }

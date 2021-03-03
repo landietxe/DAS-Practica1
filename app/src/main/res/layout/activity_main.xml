@@ -21,12 +21,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="519dp"
+        android:layout_width="412dp"
+        android:layout_height="456dp"
         android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLibro" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextLibro"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editTextLibro"
@@ -35,6 +38,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="Buscar libro"
         android:inputType="textPersonName"
         android:text="Metro 2033"
         app:layout_constraintStart_toStartOf="parent"

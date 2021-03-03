@@ -1,7 +1,6 @@
 package com.example.practica1;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -65,37 +64,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void obtenerDatos(String query){
-        // below line is use to initialize
-        // the variable for our request queue.
+
+        //Inicialización de la variable para pedir el recurso
         mRequestQueue = Volley.newRequestQueue(MainActivity.this);
 
-        // below line is use to clear cache this
-        // will be use when our data is being updated.
+        //Limpiar el cache
         mRequestQueue.getCache().clear();
 
-        // below is the url for getting data from API in json format.
-        String url = "https://www.googleapis.com/books/v1/volumes?q=" + query;
+        //Url con el que obtener los datos en formato JSON
+        String url = "https://www.googleapis.com/books/v1/volumes?q=" + query + "&maxResults=40&printType=books";
 
-        // below line we are  creating a new request queue.
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
 
-
-        // below line is use to make json object request inside that we
-        // are passing url, get method and getting json object. .
         JsonObjectRequest booksObjrequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                // inside on response method we are extracting all our json data.
                 try {
                     JSONArray itemsArray = response.getJSONArray("items");
                     for (int i = 0; i < itemsArray.length(); i++) {
                         JSONObject itemsObj = itemsArray.getJSONObject(i);
                         JSONObject volumeObj = itemsObj.getJSONObject("volumeInfo");
-                        String title = volumeObj.optString("title");
+                        //System.out.println(volumeObj);
+                        String title = volumeObj.optString("title"); //Titulo
+                        String editorial =  volumeObj.optString("publisher");//Editorial
+                        String idioma = volumeObj.optString("language"); //Idioma del libro
+                        String previewLink = volumeObj.optString("previewLink"); //PreviewLink
+                        Double rating = volumeObj.optDouble("averageRating"); //Nota media
+                        int numHojas = volumeObj.optInt("pageCount"); //Número de hojas
+                        String descripcion = volumeObj.optString("description"); //Descripción
+                        JSONArray arrayAutores = volumeObj.optJSONArray("authors"); //Autores
+
+                        ArrayList<String> autores=new ArrayList<String>();
+                        if (arrayAutores != null) {
+                            for (int j = 0; j < arrayAutores.length(); j++) {
+                                autores.add(arrayAutores.optString(j));
+                            }
+                        }
                         JSONObject imageLinks = volumeObj.optJSONObject("imageLinks");
                         if(imageLinks != null){
                             String thumbnail = imageLinks.optString("thumbnail");
-                            Libro libro = new Libro(title,thumbnail);
+                            Libro libro = new Libro(title,thumbnail,autores,editorial, descripcion, numHojas, idioma, previewLink, rating);
                             bookInfoArrayList.add(libro);
                         }
                     }

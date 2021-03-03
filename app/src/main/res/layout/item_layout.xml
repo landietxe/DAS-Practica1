@@ -8,7 +8,6 @@
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -17,21 +16,67 @@
             android:id="@+id/libro_imagen"
             android:layout_width="130dp"
             android:layout_height="160dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_margin="10dp" />
 
         <TextView
             android:id="@+id/libro_titulo"
-            android:layout_width="match_parent"
+            android:layout_width="198dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/libro_imagen"
+            android:padding="3dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/autor"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/libro_titulo"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@id/libro_imagen"
+            android:padding="3dp"
+            android:text="@string/autor"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/libro_autor"
+            android:layout_width="151dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/libro_titulo"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/autor"
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/editorial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/autor"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/libro_imagen"
             android:padding="3dp"
-            android:text="Book Title"
+            android:text="@string/editorial"
             android:textColor="@color/black"
-            android:textSize="11sp" />
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/libro_editorial"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/autor"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/editorial"
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

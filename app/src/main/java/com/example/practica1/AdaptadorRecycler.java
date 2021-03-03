@@ -34,10 +34,11 @@ public class AdaptadorRecycler extends RecyclerView.Adapter<ViewHolder> {
 
         Libro libro = listaLibros.get(position);
         holder.eltexto.setText(libro.getTitle());
-        //Picasso.get().load(bookInfo.getThumbnail()).into(holder.laimagen);
+        holder.autores.setText(libro.getAutores().toString());
+        holder.editorial.setText(libro.getEditorial());
         String url = libro.getThumbnail().replace("http", "https");
         Picasso.get().load(url).into(holder.laimagen);
-        System.out.println(libro.getThumbnail());
+        //System.out.println(libro.getThumbnail());
     }
 
     @Override
