@@ -4,4 +4,5 @@
     <string name="titulo">Title:</string>
     <string name="editorial">Publisher:</string>
     <string name="autor">Author:</string>
+    <string name="añadir">Add to library</string>
 </resources>

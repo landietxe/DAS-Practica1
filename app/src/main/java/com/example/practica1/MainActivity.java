@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -111,8 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    // displaying a toast message when we get any error from API
-                    Toast.makeText(MainActivity.this, "No Data Found" + e, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "No se ha encontrado información" + e, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -120,11 +121,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // also displaying error message in toast.
-                Toast.makeText(MainActivity.this, "Error found is " + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
             }
         });
-        // at last we are adding our json object
-        // request in our request queue.
         queue.add(booksObjrequest);
 
     }

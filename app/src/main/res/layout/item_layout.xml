@@ -52,7 +52,8 @@
             android:layout_toEndOf="@+id/autor"
             android:padding="3dp"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            />
 
         <TextView
             android:id="@+id/editorial"
