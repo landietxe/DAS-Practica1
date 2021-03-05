@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //PARA HACER PRUEBAS----------------------
+        //this.deleteDatabase("Libreria");
+        //-----------------------------------------
 
         editTextLibro = (EditText) findViewById(R.id.editTextLibro);
         elreciclerview = (RecyclerView) findViewById(R.id.recyclerview);
@@ -62,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         elreciclerview.setLayoutManager(linearLayoutManager);
         elreciclerview.setAdapter(eladaptador);
         obtenerDatos(busqueda);
-
     }
 
     public void obtenerDatos(String query){
@@ -86,28 +92,35 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < itemsArray.length(); i++) {
                         JSONObject itemsObj = itemsArray.getJSONObject(i);
                         JSONObject volumeObj = itemsObj.getJSONObject("volumeInfo");
-                        //System.out.println(volumeObj);
-                        String title = volumeObj.optString("title"); //Titulo
-                        String editorial =  volumeObj.optString("publisher");//Editorial
-                        String idioma = volumeObj.optString("language"); //Idioma del libro
-                        String previewLink = volumeObj.optString("previewLink"); //PreviewLink
-                        Double rating = volumeObj.optDouble("averageRating"); //Nota media
-                        int numHojas = volumeObj.optInt("pageCount"); //Número de hojas
-                        String descripcion = volumeObj.optString("description"); //Descripción
-                        JSONArray arrayAutores = volumeObj.optJSONArray("authors"); //Autores
+                        System.out.println(volumeObj);
+                        //JSONArray industryIdentifiersArray =
+                        if(volumeObj.has("industryIdentifiers")){  //Si la respuesta JSON no contiene ISBN, no vamos a recoger ese libro
+                            String ISBN = volumeObj.getJSONArray("industryIdentifiers").optJSONObject(0).optString("identifier");
+                            String title = volumeObj.optString("title"); //Titulo
+                            String editorial =  volumeObj.optString("publisher");//Editorial
+                            String idioma = volumeObj.optString("language"); //Idioma del libro
+                            String previewLink = volumeObj.optString("previewLink"); //PreviewLink
+                            Double rating = volumeObj.optDouble("averageRating"); //Nota media
+                            int numHojas = volumeObj.optInt("pageCount"); //Número de hojas
+                            String descripcion = volumeObj.optString("description"); //Descripción
+                            JSONArray arrayAutores = volumeObj.optJSONArray("authors"); //Autores
 
-                        ArrayList<String> autores=new ArrayList<String>();
-                        if (arrayAutores != null) {
-                            for (int j = 0; j < arrayAutores.length(); j++) {
-                                autores.add(arrayAutores.optString(j));
+                            System.out.println("ISBN: " + ISBN);
+
+                            ArrayList<String> autores=new ArrayList<String>();
+                            if (arrayAutores != null) {
+                                for (int j = 0; j < arrayAutores.length(); j++) {
+                                    autores.add(arrayAutores.optString(j));
+                                }
+                            }
+                            JSONObject imageLinks = volumeObj.optJSONObject("imageLinks");
+                            if(imageLinks != null){
+                                String thumbnail = imageLinks.optString("thumbnail");
+                                Libro libro = new Libro(ISBN,title,thumbnail,autores,editorial, descripcion, numHojas, idioma, previewLink, rating);
+                                bookInfoArrayList.add(libro);
                             }
                         }
-                        JSONObject imageLinks = volumeObj.optJSONObject("imageLinks");
-                        if(imageLinks != null){
-                            String thumbnail = imageLinks.optString("thumbnail");
-                            Libro libro = new Libro(title,thumbnail,autores,editorial, descripcion, numHojas, idioma, previewLink, rating);
-                            bookInfoArrayList.add(libro);
-                        }
+
                     }
                     eladaptador.notifyDataSetChanged();
 
@@ -127,4 +140,5 @@ public class MainActivity extends AppCompatActivity {
         queue.add(booksObjrequest);
 
     }
+
 }

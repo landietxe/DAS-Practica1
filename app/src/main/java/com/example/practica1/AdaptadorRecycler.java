@@ -54,11 +54,13 @@ public class AdaptadorRecycler extends RecyclerView.Adapter<ViewHolder>  {
                 // inside on click listener method we are calling a new activity
                 // and passing all the data of that item in next intent.
                 Intent i = new Intent(context, InfoLibro.class);
+                i.putExtra("isbn",libro.getISBN());
                 i.putExtra("titulo", libro.getTitle());
                 i.putExtra("autor", libro.getAutores());
                 i.putExtra("editorial", libro.getEditorial());
                 i.putExtra("descripcion", libro.getDescripcion());
                 i.putExtra("imagen", libro.getThumbnail());
+                i.putExtra("previewlink",libro.getPreviewLink());
                 context.startActivity(i);
             }
         });

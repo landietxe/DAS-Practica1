@@ -5,4 +5,13 @@
     <string name="editorial">Editoriala:</string>
     <string name="autor">Egilea:</string>
     <string name="añadir">Liburutegira gehitu</string>
+    <string name="info1">Liburuua zure liburutegian dago jada.</string>
+    <string name="dialog1Text">Liburua zure liburutegira gehitu nahi duzu?</string>
+    <string name="Si">Bai</string>
+    <string name="No">Ez</string>
+    <string name="Buscar">BILATU</string>
+    <string name="notificacion1">Liburu berria</string>
+    <string name="notificacion2">Liburu berri bat gehitu da liburutegira</string>
+    <string name="notificacion3">Liburu berria gehituta</string>
+    <string name="toastNoAñadido">Ez da liburua gorde</string>
 </resources>

@@ -4,4 +4,13 @@
     <string name="editorial">Editorial:</string>
     <string name="autor">Autor:</string>
     <string name="añadir">Añadir a biblioteca</string>
+    <string name="info1">El libro ya se encuentra en tu libreria</string>
+    <string name="dialog1Text">¿Deseas añadir el libro a tu biblioteca?</string>
+    <string name="Si">Sí</string>
+    <string name="No">No</string>
+    <string name="Buscar">BUSCAR</string>
+    <string name="notificacion1">Nuevo libro</string>
+    <string name="notificacion2">Se ha añadido un nuevo libro a la biblioteca</string>
+    <string name="notificacion3">Nuevo libro añadido</string>
+    <string name="toastNoAñadido">No se ha guardado el libro</string>
 </resources>

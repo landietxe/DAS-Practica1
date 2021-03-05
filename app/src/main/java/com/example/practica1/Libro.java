@@ -3,6 +3,7 @@ package com.example.practica1;
 import java.util.ArrayList;
 
 public class Libro {
+    private String ISBN;
     private String titulo;
     private String imagen;
     private String editorial;
@@ -13,7 +14,8 @@ public class Libro {
     private String previewLink;
     private Double rating;
 
-    public Libro(String title, String thumbnail, ArrayList<String> autores, String editorial, String descripcion, int numHojas, String idioma, String previewLink, double rating) {
+    public Libro(String ISBN, String title, String thumbnail, ArrayList<String> autores, String editorial, String descripcion, int numHojas, String idioma, String previewLink, double rating) {
+        this.ISBN=ISBN;
         this.titulo = title;
         this.imagen = thumbnail;
         this.autores = autores;
@@ -39,6 +41,8 @@ public class Libro {
         autores = android.text.TextUtils.join(",", this.autores);
         return autores;
     }
+
+    public String getISBN() { return ISBN; }
 
     public void setAutores(ArrayList<String> autores) {
         this.autores = autores;
@@ -73,4 +77,5 @@ public class Libro {
 
     public double getRating() { return rating; }
     public void setRating(double rating) { this.rating = rating; }
+
 }

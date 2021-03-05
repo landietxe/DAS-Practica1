@@ -5,4 +5,13 @@
     <string name="editorial">Publisher:</string>
     <string name="autor">Author:</string>
     <string name="añadir">Add to library</string>
+    <string name="info1">The book is already in your library</string>
+    <string name="dialog1Text">Do you want to add the book to your library?</string>
+    <string name="Si">Yes</string>
+    <string name="No">No</string>
+    <string name="Buscar">FIND</string>
+    <string name="notificacion1">New book</string>
+    <string name="notificacion2">A new book has been added to the library</string>
+    <string name="notificacion3">New book added</string>
+    <string name="toastNoAñadido">The book has not been saved</string>
 </resources>

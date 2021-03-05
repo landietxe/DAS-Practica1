@@ -11,7 +11,7 @@
         android:layout_width="99dp"
         android:layout_height="43dp"
         android:onClick="onClickBuscar"
-        android:text="Buscar"
+        android:text="@string/Buscar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.358"
@@ -43,4 +43,5 @@
         android:text="Metro 2033"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
