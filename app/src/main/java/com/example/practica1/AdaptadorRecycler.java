@@ -61,6 +61,7 @@ public class AdaptadorRecycler extends RecyclerView.Adapter<ViewHolder>  {
                 i.putExtra("descripcion", libro.getDescripcion());
                 i.putExtra("imagen", libro.getThumbnail());
                 i.putExtra("previewlink",libro.getPreviewLink());
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(i);
             }
         });

@@ -7,9 +7,11 @@ import androidx.fragment.app.DialogFragment;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -109,7 +111,7 @@ public class InfoLibro extends AppCompatActivity implements DialogoConfirmar.Lis
             elCanal.enableLights(true);
             elCanal.setLightColor(Color.RED);
             elCanal.setVibrationPattern(new long[]{0, 1000, 500, 1000});
-            elCanal.enableVibration(true);
+            elCanal.enableVibration(false);
 
             elManager.createNotificationChannel(elCanal);
         }
@@ -137,4 +139,5 @@ public class InfoLibro extends AppCompatActivity implements DialogoConfirmar.Lis
         toast.show();
 
     }
+
 }

@@ -14,7 +14,7 @@ public class Libro {
     private String previewLink;
     private Double rating;
 
-    public Libro(String ISBN, String title, String thumbnail, ArrayList<String> autores, String editorial, String descripcion, int numHojas, String idioma, String previewLink, double rating) {
+    public Libro(String ISBN, String title, String thumbnail, ArrayList<String> autores, String editorial, String descripcion, int numHojas, String idioma, String previewLink,double rating) {
         this.ISBN=ISBN;
         this.titulo = title;
         this.imagen = thumbnail;
@@ -25,6 +25,14 @@ public class Libro {
         this.idioma = idioma;
         this.previewLink = previewLink;
         this.rating = rating;
+    }
+    public Libro(String ISBN, String title,String editorial,String descripcion, String imagen, String preview){
+        this.ISBN=ISBN;
+        this.titulo=title;
+        this.editorial=editorial;
+        this.descripcion=descripcion;
+        this.imagen=imagen;
+        this.previewLink=preview;
     }
     // creating getter and setter methods
     public String getTitle() {

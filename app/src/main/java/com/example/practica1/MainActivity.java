@@ -40,9 +40,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //PARA HACER PRUEBAS----------------------
-        //this.deleteDatabase("Libreria");
-        //-----------------------------------------
 
         editTextLibro = (EditText) findViewById(R.id.editTextLibro);
         elreciclerview = (RecyclerView) findViewById(R.id.recyclerview);
@@ -139,6 +136,15 @@ public class MainActivity extends AppCompatActivity {
         });
         queue.add(booksObjrequest);
 
+    }
+
+    @Override
+    public void onBackPressed(){
+        Context context = getApplicationContext();
+        Intent newIntent = new Intent(context, MainActivityBiblioteca.class);
+        newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(newIntent);
+        finish();
     }
 
 }

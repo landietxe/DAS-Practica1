@@ -13,4 +13,6 @@
     <string name="notificacion2">Se ha añadido un nuevo libro a la biblioteca</string>
     <string name="notificacion3">Nuevo libro añadido</string>
     <string name="toastNoAñadido">No se ha guardado el libro</string>
+    <string name="MiBiblioteca">Mi Biblioteca</string>
+    <string name="noLibros">Todavía no tienes libros en tu biblioteca, para añadir uno pulsa en Buscar</string>
 </resources>

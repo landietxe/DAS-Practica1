@@ -14,4 +14,6 @@
     <string name="notificacion2">A new book has been added to the library</string>
     <string name="notificacion3">New book added</string>
     <string name="toastNoAñadido">The book has not been saved</string>
+    <string name="MiBiblioteca">My Library</string>
+    <string name="noLibros">You don\'t have any books in your library yet. To add a new one click on Find button</string>
 </resources>

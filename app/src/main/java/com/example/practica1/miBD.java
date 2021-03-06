@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class miBD extends SQLiteOpenHelper {
     public miBD(@Nullable Context context, @Nullable String name,
                 @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -48,6 +50,27 @@ public class miBD extends SQLiteOpenHelper {
         content.put("Imagen",imagen);
         content.put("Preview",preview);
         bd.insert("Libro", null, content);
+        bd.close();
+    }
+    public ArrayList<Libro> getLibros(){
+        ArrayList<Libro> listalibros = new ArrayList<Libro>();
+        SQLiteDatabase bd = getWritableDatabase();
+        Cursor c = bd.rawQuery("SELECT * FROM Libro", null);
+        while (c.moveToNext()){
+            String ISBN = c.getString(0);
+            String titulo = c.getString(1);
+            String autor = c.getString(2);
+            String editorial = c.getString(3);
+            String descripcion = c.getString(4);
+            String imagen = c.getString(5);
+            String preview = c.getString(6);
+            Libro l= new Libro(ISBN,titulo,editorial,descripcion,imagen,preview);
+            listalibros.add(l);
+        }
+        c.close();
+        bd.close();
+
+        return listalibros;
     }
 
 }

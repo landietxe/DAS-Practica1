@@ -14,4 +14,6 @@
     <string name="notificacion2">Liburu berri bat gehitu da liburutegira</string>
     <string name="notificacion3">Liburu berria gehituta</string>
     <string name="toastNoAñadido">Ez da liburua gorde</string>
+    <string name="MiBiblioteca">Nire Liburutegia</string>
+    <string name="noLibros">Oraindik ez daukazu libururik zure liburutegian, sakatu Bilatu botoian berri bat gehitzeko</string>
 </resources>
