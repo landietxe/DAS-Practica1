@@ -5,7 +5,7 @@
     <string name="editorial">Editoriala:</string>
     <string name="autor">Egilea:</string>
     <string name="añadir">Liburutegira gehitu</string>
-    <string name="info1">Liburuua zure liburutegian dago jada.</string>
+    <string name="info1">Liburua zure liburutegian dago jada.</string>
     <string name="dialog1Text">Liburua zure liburutegira gehitu nahi duzu?</string>
     <string name="Si">Bai</string>
     <string name="No">Ez</string>
@@ -16,4 +16,9 @@
     <string name="toastNoAñadido">Ez da liburua gorde</string>
     <string name="MiBiblioteca">Nire Liburutegia</string>
     <string name="noLibros">Oraindik ez daukazu libururik zure liburutegian, sakatu Bilatu botoian berri bat gehitzeko</string>
+    <string name="Borrar">Liburua liburutegitik kendu</string>
+    <string name="borrarBilbioteca">Liburua zure liburutegitik kendu nahi al duzu?</string>
+    <string name="toastNoBorrado">Ez da liburua kendu</string>
+    <string name="notificacionBorrar1">Liburua ezabatuta</string>
+    <string name="notificacionBorrar2">Liburua liburutegitik ezabatu da</string>
 </resources>

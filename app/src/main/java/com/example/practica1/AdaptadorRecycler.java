@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.practica1.Actividades.InfoLibro;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -14,9 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Practica1">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".InfoLibro" />
-        <activity android:name=".MainActivityBiblioteca">
+        <activity android:name=".Actividades.InfoLibroBiblioteca"></activity>
+        <activity android:name=".Actividades.MainActivity" />
+        <activity android:name=".Actividades.InfoLibro" />
+        <activity android:name=".Actividades.MainActivityBiblioteca">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

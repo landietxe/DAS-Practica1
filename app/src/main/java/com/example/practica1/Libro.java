@@ -7,14 +7,14 @@ public class Libro {
     private String titulo;
     private String imagen;
     private String editorial;
-    private ArrayList<String> autores;
+    private String autores;
     private String descripcion;
     private int numHojas;
     private String idioma;
     private String previewLink;
     private Double rating;
 
-    public Libro(String ISBN, String title, String thumbnail, ArrayList<String> autores, String editorial, String descripcion, int numHojas, String idioma, String previewLink,double rating) {
+    public Libro(String ISBN, String title, String thumbnail, String autores, String editorial, String descripcion, int numHojas, String idioma, String previewLink,double rating) {
         this.ISBN=ISBN;
         this.titulo = title;
         this.imagen = thumbnail;
@@ -26,13 +26,14 @@ public class Libro {
         this.previewLink = previewLink;
         this.rating = rating;
     }
-    public Libro(String ISBN, String title,String editorial,String descripcion, String imagen, String preview){
+    public Libro(String ISBN, String title,String autores,String editorial,String descripcion, String imagen, String preview){
         this.ISBN=ISBN;
         this.titulo=title;
         this.editorial=editorial;
         this.descripcion=descripcion;
         this.imagen=imagen;
         this.previewLink=preview;
+        this.autores=autores;
     }
     // creating getter and setter methods
     public String getTitle() {
@@ -44,15 +45,12 @@ public class Libro {
     }
 
     public String getAutores(){
-        //https://stackoverflow.com/questions/10850753/how-to-convert-a-liststring-into-a-comma-separated-string-without-iterating-li
-        String autores = "";
-        autores = android.text.TextUtils.join(",", this.autores);
         return autores;
     }
 
     public String getISBN() { return ISBN; }
 
-    public void setAutores(ArrayList<String> autores) {
+    public void setAutores(String autores) {
         this.autores = autores;
     }
 

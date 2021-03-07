@@ -16,4 +16,9 @@
     <string name="toastNoAñadido">The book has not been saved</string>
     <string name="MiBiblioteca">My Library</string>
     <string name="noLibros">You don\'t have any books in your library yet. To add a new one click on Find button</string>
+    <string name="Borrar">Delete book from library</string>
+    <string name="borrarBilbioteca">Do you want to delete the book from your library?</string>
+    <string name="toastNoBorrado">The book has not been removed</string>
+    <string name="notificacionBorrar1">Book removed</string>
+    <string name="notificacionBorrar2">The book has been removed from the library</string>
 </resources>

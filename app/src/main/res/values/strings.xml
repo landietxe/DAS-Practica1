@@ -15,4 +15,9 @@
     <string name="toastNoAñadido">No se ha guardado el libro</string>
     <string name="MiBiblioteca">Mi Biblioteca</string>
     <string name="noLibros">Todavía no tienes libros en tu biblioteca, para añadir uno pulsa en Buscar</string>
+    <string name="Borrar">Borrar de biblioteca</string>
+    <string name="borrarBilbioteca">¿Deseas borrar el libro de tu biblioteca?</string>
+    <string name="toastNoBorrado">No se ha eliminado el libro</string>
+    <string name="notificacionBorrar1">Libro eliminado</string>
+    <string name="notificacionBorrar2">Se ha eliminado el libro de la biblioteca</string>
 </resources>

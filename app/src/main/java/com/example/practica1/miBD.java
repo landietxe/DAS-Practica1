@@ -64,7 +64,7 @@ public class miBD extends SQLiteOpenHelper {
             String descripcion = c.getString(4);
             String imagen = c.getString(5);
             String preview = c.getString(6);
-            Libro l= new Libro(ISBN,titulo,editorial,descripcion,imagen,preview);
+            Libro l= new Libro(ISBN,titulo,autor,editorial,descripcion,imagen,preview);
             listalibros.add(l);
         }
         c.close();
@@ -73,4 +73,9 @@ public class miBD extends SQLiteOpenHelper {
         return listalibros;
     }
 
+    public void borrarLibro(String ISBN) {
+        SQLiteDatabase bd = getWritableDatabase();
+        bd.execSQL("DELETE FROM Libro WHERE ISBN='"+ISBN+"'");
+        bd.close();
+    }
 }

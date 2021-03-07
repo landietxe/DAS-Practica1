@@ -1,15 +1,19 @@
-package com.example.practica1;
+package com.example.practica1.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.practica1.Actividades.MainActivity;
+import com.example.practica1.AdaptadorRecyclerBiblioteca;
+import com.example.practica1.Libro;
+import com.example.practica1.R;
+import com.example.practica1.miBD;
 
 import java.util.ArrayList;
 
@@ -51,7 +55,7 @@ public class MainActivityBiblioteca extends AppCompatActivity {
         recyclerViewBiblioteca.setAdapter(eladaptador);
     }
     public void onClickBuscar(View v){
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
