@@ -9,6 +9,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -135,6 +136,11 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
         newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(newIntent);
         finish();
+    }
+
+    public void onClickPreview(View v){
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(this.preview));
+        startActivity(i);
     }
 
 }

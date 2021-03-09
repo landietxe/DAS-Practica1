@@ -28,11 +28,11 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/botonAñadir"
+        android:id="@+id/botonBorrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClickAñadir"
-        android:text="@string/añadir"
+        android:onClick="onClickBorrar"
+        android:text="@string/Borrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.189"
@@ -126,7 +126,7 @@
         android:text="Peview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/botonAñadir"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.502" />
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toEndOf="@+id/botonBorrar"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
