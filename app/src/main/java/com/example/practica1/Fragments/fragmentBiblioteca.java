@@ -47,9 +47,7 @@ public class fragmentBiblioteca extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //PARA HACER PRUEBAS----------------------
-        //this.deleteDatabase("Libreria");
-        //-----------------------------------------
+
 
         tvVacio = (TextView) getView().findViewById(R.id.tvVacio);
         recyclerViewBiblioteca = (RecyclerView)getView().findViewById(R.id.recyclerViewBiblioteca);

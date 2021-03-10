@@ -88,7 +88,7 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
 
     @Override
     public void alpulsarSI() {
-        gestorDB.borrarLibro(this.ISBN);
+        gestorDB.borrarUsuarioLibro(this.ISBN);
         //Crear notificación indicando que se ha eliminado el libro de la biblioteca
         NotificationManager elManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder elBuilder = new NotificationCompat.Builder(this, "IdCanal");

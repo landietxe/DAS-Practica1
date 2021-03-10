@@ -7,4 +7,17 @@
         android:icon="@android:drawable/ic_menu_search"
         android:title="Buscar"
         app:showAsAction="ifRoom|withText" />
+
+    <item
+        android:id="@+id/opcion2"
+        android:title="es"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/opcion3"
+        android:title="en"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/opcion4"
+        android:title="eu"
+        app:showAsAction="never" />
 </menu>

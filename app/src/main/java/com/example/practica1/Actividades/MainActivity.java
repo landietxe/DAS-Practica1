@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         elreciclerview.setLayoutManager(linearLayoutManager);
         elreciclerview.setAdapter(eladaptador);
 
+
+
     }
 
     public void onClickBuscar(View v){

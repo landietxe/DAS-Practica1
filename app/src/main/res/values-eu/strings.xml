@@ -21,4 +21,6 @@
     <string name="toastNoBorrado">Ez da liburua kendu</string>
     <string name="notificacionBorrar1">Liburua ezabatuta</string>
     <string name="notificacionBorrar2">Liburua liburutegitik ezabatu da</string>
+    <string name="usuario">Erabiltzailea:</string>
+    <string name="contraseña">Pasahitza:</string>
 </resources>

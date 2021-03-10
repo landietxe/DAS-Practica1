@@ -85,7 +85,7 @@ public class InfoLibro extends AppCompatActivity implements DialogoConfirmar.Lis
 
     public void onClickAñadir(View v){
         System.out.println("prueba");
-        String respuesta =gestorDB.comprobarLibro(this.ISBN);
+        String respuesta =gestorDB.comprobarLibroUsuario(this.ISBN);
         if(respuesta.equals("")){//Si el libro no se encuentra en la base de datos
             //gestorDB.insertarLibro(this.ISBN,this.titulo,this.autor,this.editorial,this.descripcion);
             DialogFragment dialogoalerta= new DialogoConfirmar();

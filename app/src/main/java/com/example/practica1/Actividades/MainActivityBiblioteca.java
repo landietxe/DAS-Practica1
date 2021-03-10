@@ -24,11 +24,15 @@ import com.example.practica1.Fragments.fragmentInfoLibroBibliotecaLand;
 import com.example.practica1.R;
 import com.example.practica1.miBD;
 
+import java.sql.SQLOutput;
+import java.util.Locale;
+
 public class MainActivityBiblioteca extends AppCompatActivity implements fragmentBiblioteca.listenerDelFragment,fragmentInfoLibroBibliotecaLand.listener2,
         DialogoConfirmarBorrar.ListenerdelDialogo{
 
     private String ISBN;
     private miBD gestorDB;
+    private int user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +76,58 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
             case R.id.opcion1:{
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("id",this.user_id);
                 startActivity(intent);
                 finish();
+                return true;
             }
+
+            /*case R.id.opcion2:{
+                //Idioma seleccionado es
+                cambiarIdioma("es");
+                System.out.println(R.id.opcion2);
+                System.out.println("ES");
+                return true;
+
+            }
+            case R.id.opcion3:{
+                //Idioma seleccionado en
+                cambiarIdioma("en");
+                System.out.println(R.id.opcion3);
+                System.out.println("EN");
+                return true;
+
+            }
+            case R.id.opcion4:{
+                //Idioma seleccionado eu
+                cambiarIdioma("eu");
+                System.out.println("EU");
+                return true;
+
+            }
+
+             */
+
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void cambiarIdioma(String idioma){
+        Locale nuevaloc = new Locale(idioma);
+        Locale.setDefault(nuevaloc);
+        Configuration configuration =
+                getBaseContext().getResources().getConfiguration();
+        configuration.setLocale(nuevaloc);
+        configuration.setLayoutDirection(nuevaloc);
+
+        Context context = getBaseContext().createConfigurationContext(configuration);
+        getBaseContext().getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
+
+        finish();
+        startActivity(getIntent());
+
+
+
     }
 
     @Override
@@ -95,7 +146,7 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
 
     @Override
     public void alpulsarSI() {
-        gestorDB.borrarLibro(this.ISBN);
+        gestorDB.borrarUsuarioLibro(this.ISBN);
         //Crear notificación indicando que se ha eliminado el libro de la biblioteca
         NotificationManager elManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder elBuilder = new NotificationCompat.Builder(this, "IdCanal");

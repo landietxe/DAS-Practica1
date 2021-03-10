@@ -21,4 +21,6 @@
     <string name="toastNoBorrado">The book has not been removed</string>
     <string name="notificacionBorrar1">Book removed</string>
     <string name="notificacionBorrar2">The book has been removed from the library</string>
+    <string name="usuario">User:</string>
+    <string name="contraseña">Password:</string>
 </resources>
