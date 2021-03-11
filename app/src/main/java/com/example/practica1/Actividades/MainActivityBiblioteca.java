@@ -24,6 +24,9 @@ import com.example.practica1.Fragments.fragmentInfoLibroBibliotecaLand;
 import com.example.practica1.R;
 import com.example.practica1.miBD;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.SQLOutput;
 import java.util.Locale;
 
@@ -32,11 +35,12 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
 
     private String ISBN;
     private miBD gestorDB;
-    private int user_id;
+    private String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_biblioteca);
         setSupportActionBar(findViewById(R.id.toolbar));
         gestorDB = new miBD(this, "Libreria", null, 1);
@@ -81,8 +85,7 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
                 finish();
                 return true;
             }
-
-            /*case R.id.opcion2:{
+            case R.id.opcion2:{
                 //Idioma seleccionado es
                 cambiarIdioma("es");
                 System.out.println(R.id.opcion2);
@@ -106,8 +109,6 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
 
             }
 
-             */
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -125,8 +126,6 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
 
         finish();
         startActivity(getIntent());
-
-
 
     }
 
@@ -146,7 +145,17 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
 
     @Override
     public void alpulsarSI() {
-        gestorDB.borrarUsuarioLibro(this.ISBN);
+
+        try {
+            BufferedReader ficherointerno = new BufferedReader(new InputStreamReader(openFileInput("usuario_actual.txt")));
+            String linea = ficherointerno.readLine();
+            this.user_id= linea.split(":")[1]; //id:num
+            ficherointerno.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        gestorDB.borrarUsuarioLibro(this.ISBN,this.user_id);
         //Crear notificación indicando que se ha eliminado el libro de la biblioteca
         NotificationManager elManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder elBuilder = new NotificationCompat.Builder(this, "IdCanal");
@@ -191,5 +200,14 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
         toast.setGravity( Gravity.CENTER_VERTICAL, 0, 0);
         toast.show();
 
+    }
+
+    @Override
+    public void onBackPressed(){
+        Context context = getApplicationContext();
+        Intent newIntent = new Intent(context, LoginActivity.class);
+        newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(newIntent);
+        finish();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.practica1.Actividades;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.practica1.R;
 import com.example.practica1.miBD;
+
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText usuario;
@@ -34,11 +38,24 @@ public class LoginActivity extends AppCompatActivity {
 
         String user=usuario.getText().toString();
         String password = contraseña.getText().toString();
-
         int id = gestorDB.getUsuario(user,password);
+
         if(id != -1){ //El usuario existe
             System.out.println("EL USUARIO EXISTE");
+
+            try {
+                OutputStreamWriter fichero = new OutputStreamWriter(openFileOutput("usuario_actual.txt",
+                        Context.MODE_PRIVATE));
+                fichero.write("id:"+id+"\n"+"Usuario:"+user);
+                fichero.close();
+            } catch (IOException e){
+
+            }
+
+
+
             Intent intent = new Intent(this,MainActivityBiblioteca.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //intent.putExtra("id",id);
             startActivity(intent);
         }

@@ -30,11 +30,11 @@ public class miBD extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-    public String comprobarLibroUsuario(String ISBN){
+    public String comprobarLibroUsuario(String ISBN,String user_id){
         System.out.println("-..........................");
         SQLiteDatabase bd = getWritableDatabase();
         //Cursor c = bd.rawQuery("SELECT * FROM Libro WHERE ISBN='"+ISBN+"'", null);
-        Cursor c = bd.rawQuery("SELECT * FROM Libro l JOIN Usuario_Libro ul ON l.ISBN = ul.ISBN JOIN Usuarios u ON u.user_id = ul.user_id WHERE u.user_id=1 AND l.ISBN='" + ISBN + "'", null);
+        Cursor c = bd.rawQuery("SELECT * FROM Libro l JOIN Usuario_Libro ul ON l.ISBN = ul.ISBN JOIN Usuarios u ON u.user_id = ul.user_id WHERE u.user_id='"+user_id+"' AND l.ISBN='" + ISBN + "'", null);
         String respuesta="";
         if(c.moveToNext()){
             respuesta = c.getString(0);
@@ -59,7 +59,7 @@ public class miBD extends SQLiteOpenHelper {
         return respuesta;
 
     }
-    public void insertarLibro(String ISBN,String titulo, String autor,String editorial,String descripcion,String imagen,String preview){
+    public void insertarLibro(String ISBN,String titulo, String autor,String editorial,String descripcion,String imagen,String preview,String user_id){
         String libroIsbn = this.comprobarLibro(ISBN);
         SQLiteDatabase bd = getWritableDatabase();
         if ("".equals(libroIsbn)){ //El libro no está en la base de datos
@@ -77,17 +77,17 @@ public class miBD extends SQLiteOpenHelper {
 
         //Asignamos el libro al usuario
         ContentValues content2 = new ContentValues();
-        content2.put("user_id",1);
+        content2.put("user_id",user_id);
         content2.put("ISBN",ISBN);
         bd.insert("Usuario_Libro", null, content2);
 
         bd.close();
     }
-    public ArrayList<Libro> getLibros(){
+    public ArrayList<Libro> getLibros(String user_id){
         ArrayList<Libro> listalibros = new ArrayList<Libro>();
         SQLiteDatabase bd = getWritableDatabase();
         //Cursor c = bd.rawQuery("SELECT * FROM Libro", null);
-        Cursor c = bd.rawQuery("SELECT * FROM Libro l JOIN Usuario_Libro ul ON l.ISBN = ul.ISBN JOIN Usuarios u ON u.user_id = ul.user_id WHERE u.user_id=1", null);
+        Cursor c = bd.rawQuery("SELECT * FROM Libro l JOIN Usuario_Libro ul ON l.ISBN = ul.ISBN JOIN Usuarios u ON u.user_id = ul.user_id WHERE u.user_id='"+user_id+"'", null);
         while (c.moveToNext()){
             String ISBN = c.getString(0);
             String titulo = c.getString(1);
@@ -105,9 +105,9 @@ public class miBD extends SQLiteOpenHelper {
         return listalibros;
     }
 
-    public void borrarUsuarioLibro(String ISBN) {
+    public void borrarUsuarioLibro(String ISBN,String user_id) {
         SQLiteDatabase bd = getWritableDatabase();
-        bd.execSQL("DELETE FROM Usuario_Libro WHERE user_id =1 AND ISBN='"+ISBN+"'");
+        bd.execSQL("DELETE FROM Usuario_Libro WHERE user_id ='"+user_id+"' AND ISBN='"+ISBN+"'");
         Cursor c = bd.rawQuery("SELECT * FROM Libro l JOIN Usuario_Libro ul ON l.ISBN = ul.ISBN JOIN Usuarios u ON u.user_id = ul.user_id WHERE l.ISBN='" + ISBN +"'", null);
         if (!c.moveToNext()){ //El libro ya no lo tiene ningun usuario, por lo tanto se puede borrar de la base de datos
             this.borrarLibro(ISBN);
@@ -141,4 +141,6 @@ public class miBD extends SQLiteOpenHelper {
         bd.close();
 
     }
+
+
 }

@@ -24,6 +24,10 @@ import com.example.practica1.R;
 import com.example.practica1.miBD;
 import com.squareup.picasso.Picasso;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class InfoLibro extends AppCompatActivity implements DialogoConfirmar.ListenerdelDialogo {
 
     private TextView tvTitulo;
@@ -40,6 +44,7 @@ public class InfoLibro extends AppCompatActivity implements DialogoConfirmar.Lis
     private String descripcion;
     private String urlImagen;
     private String preview;
+    private String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +89,17 @@ public class InfoLibro extends AppCompatActivity implements DialogoConfirmar.Lis
     }
 
     public void onClickAñadir(View v){
+
+        try {
+            BufferedReader ficherointerno = new BufferedReader(new InputStreamReader(openFileInput("usuario_actual.txt")));
+            String linea = ficherointerno.readLine();
+            this.user_id= linea.split(":")[1]; //id:num
+            ficherointerno.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("prueba");
-        String respuesta =gestorDB.comprobarLibroUsuario(this.ISBN);
+        String respuesta =gestorDB.comprobarLibroUsuario(this.ISBN,this.user_id);
         if(respuesta.equals("")){//Si el libro no se encuentra en la base de datos
             //gestorDB.insertarLibro(this.ISBN,this.titulo,this.autor,this.editorial,this.descripcion);
             DialogFragment dialogoalerta= new DialogoConfirmar();
@@ -102,7 +116,7 @@ public class InfoLibro extends AppCompatActivity implements DialogoConfirmar.Lis
 
     @Override
     public void alpulsarSI() {
-        gestorDB.insertarLibro(this.ISBN,this.titulo,this.autor,this.editorial,this.descripcion,this.urlImagen,this.preview);
+        gestorDB.insertarLibro(this.ISBN,this.titulo,this.autor,this.editorial,this.descripcion,this.urlImagen,this.preview,this.user_id);
 
         //Crear notificación indicando que se ha añadido un nuevo libro a la libreria
         NotificationManager elManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);

@@ -21,6 +21,9 @@ import com.example.practica1.ViewHolderBiblioteca;
 import com.example.practica1.miBD;
 import com.squareup.picasso.Picasso;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class fragmentBiblioteca extends Fragment {
@@ -31,6 +34,7 @@ public class fragmentBiblioteca extends Fragment {
     private miBD gestorDB;
     private TextView tvVacio;
     private listenerDelFragment elListener;
+    private String user_id;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,8 +56,18 @@ public class fragmentBiblioteca extends Fragment {
         tvVacio = (TextView) getView().findViewById(R.id.tvVacio);
         recyclerViewBiblioteca = (RecyclerView)getView().findViewById(R.id.recyclerViewBiblioteca);
 
+        try {
+            BufferedReader ficherointerno = new BufferedReader(new InputStreamReader(getActivity().openFileInput("usuario_actual.txt")));
+            String linea = ficherointerno.readLine();
+            this.user_id= linea.split(":")[1]; //id:num
+            ficherointerno.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         gestorDB = new miBD (getActivity(), "Libreria", null, 1);
-        bookInfoArrayList = gestorDB.getLibros();
+        bookInfoArrayList = gestorDB.getLibros(this.user_id);
 
         //Si no hay ningun libro, mensaje indicando como añadir uno nuevo
         if(bookInfoArrayList.isEmpty()){
@@ -120,11 +134,4 @@ public class fragmentBiblioteca extends Fragment {
             return listaLibros.size();
         }
     }
-
-
-
-
-
-
-
 }

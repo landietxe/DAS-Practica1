@@ -23,6 +23,10 @@ import com.example.practica1.R;
 import com.example.practica1.miBD;
 import com.squareup.picasso.Picasso;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoConfirmarBorrar.ListenerdelDialogo {
 
     private TextView tvTitulo;
@@ -39,6 +43,7 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
     private String descripcion;
     private String urlImagen;
     private String preview;
+    private String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +93,17 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
 
     @Override
     public void alpulsarSI() {
-        gestorDB.borrarUsuarioLibro(this.ISBN);
+
+        try {
+            BufferedReader ficherointerno = new BufferedReader(new InputStreamReader(openFileInput("usuario_actual.txt")));
+            String linea = ficherointerno.readLine();
+            this.user_id= linea.split(":")[1]; //id:num
+            ficherointerno.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        gestorDB.borrarUsuarioLibro(this.ISBN,this.user_id);
         //Crear notificación indicando que se ha eliminado el libro de la biblioteca
         NotificationManager elManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder elBuilder = new NotificationCompat.Builder(this, "IdCanal");
