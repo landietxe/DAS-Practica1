@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        app:key="cat_datos_personales"
+        app:title="Preferencias">
+        <ListPreference
+            app:dialogTitle="@string/seleccionaIdioma"
+            app:entries="@array/idiomas"
+            app:entryValues="@array/codigoidiomas"
+            app:key="idioma"
+            app:summary="@string/seleccionaIdioma"
+            app:title="@string/idiomaPreferido" />
+        <ListPreference
+            app:dialogTitle="@string/ordenLibros"
+            app:entries="@array/orden"
+            app:entryValues="@array/codigoorden"
+            app:key="orden"
+            app:summary="@string/ordenLibros"
+            app:title="@string/ordenLibros2" />
+    </PreferenceCategory>
+</PreferenceScreen>

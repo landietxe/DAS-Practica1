@@ -83,11 +83,13 @@ public class miBD extends SQLiteOpenHelper {
 
         bd.close();
     }
-    public ArrayList<Libro> getLibros(String user_id){
+    public ArrayList<Libro> getLibros(String user_id,String orden){
+        System.out.println("*********************************************************");
+        System.out.println(orden);
         ArrayList<Libro> listalibros = new ArrayList<Libro>();
         SQLiteDatabase bd = getWritableDatabase();
         //Cursor c = bd.rawQuery("SELECT * FROM Libro", null);
-        Cursor c = bd.rawQuery("SELECT * FROM Libro l JOIN Usuario_Libro ul ON l.ISBN = ul.ISBN JOIN Usuarios u ON u.user_id = ul.user_id WHERE u.user_id='"+user_id+"'", null);
+        Cursor c = bd.rawQuery("SELECT * FROM Libro l JOIN Usuario_Libro ul ON l.ISBN = ul.ISBN JOIN Usuarios u ON u.user_id = ul.user_id WHERE u.user_id='"+user_id+"' ORDER BY l."+orden+" ASC", null);
         while (c.moveToNext()){
             String ISBN = c.getString(0);
             String titulo = c.getString(1);

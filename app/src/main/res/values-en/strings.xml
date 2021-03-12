@@ -23,4 +23,14 @@
     <string name="notificacionBorrar2">The book has been removed from the library</string>
     <string name="usuario">User:</string>
     <string name="contraseña">Password:</string>
+    <string name="ajustes">Settings</string>
+    <string name="seleccionaIdioma">Select preferred language</string>
+    <string name="idiomaPreferido">What is your preferred language?</string>
+    <string name="volver">Back</string>
+    <string name="Guardar">Save</string>
+    <string name="ordenLibros">"Select how you want to order your books "</string>
+    <string name="ordenLibros2">How do you want to order your books?</string>
+    <string name="prefTitulo">Title</string>
+    <string name="prefAutor">Author</string>
+    <string name="prefEditorial">Publisher</string>
 </resources>

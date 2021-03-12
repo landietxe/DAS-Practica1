@@ -23,4 +23,14 @@
     <string name="notificacionBorrar2">Liburua liburutegitik ezabatu da</string>
     <string name="usuario">Erabiltzailea:</string>
     <string name="contraseña">Pasahitza:</string>
+    <string name="ajustes">Ezarpenak</string>
+    <string name="seleccionaIdioma">Aukeratu hizkuntza gogokoena</string>
+    <string name="idiomaPreferido">Zein da zure hizkuntza gogokoena?</string>
+    <string name="volver">Itzuli</string>
+    <string name="Guardar">Gorde</string>
+    <string name="ordenLibros">Aukeratu nola antolatu zure liburuak</string>
+    <string name="ordenLibros2">Nola antolatu zure liburuak?</string>
+    <string name="prefTitulo">Titulua</string>
+    <string name="prefAutor">Egilea</string>
+    <string name="prefEditorial">Editoriala</string>
 </resources>

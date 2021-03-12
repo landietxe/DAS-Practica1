@@ -10,14 +10,6 @@
 
     <item
         android:id="@+id/opcion2"
-        android:title="es"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/opcion3"
-        android:title="en"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/opcion4"
-        android:title="eu"
+        android:title="@string/ajustes"
         app:showAsAction="never" />
 </menu>

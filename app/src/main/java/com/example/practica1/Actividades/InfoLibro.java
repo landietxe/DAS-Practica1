@@ -49,6 +49,11 @@ public class InfoLibro extends AppCompatActivity implements DialogoConfirmar.Lis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+
+
         setContentView(R.layout.activity_info_libro);
 
         gestorDB = new miBD (this, "Libreria", null, 1);

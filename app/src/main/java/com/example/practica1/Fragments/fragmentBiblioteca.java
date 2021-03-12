@@ -1,6 +1,7 @@
 package com.example.practica1.Fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +41,6 @@ public class fragmentBiblioteca extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_biblioteca,container,false);
-
         return v;
     }
 
@@ -66,8 +67,11 @@ public class fragmentBiblioteca extends Fragment {
         }
 
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String orden = prefs.getString("orden","title");
+
         gestorDB = new miBD (getActivity(), "Libreria", null, 1);
-        bookInfoArrayList = gestorDB.getLibros(this.user_id);
+        bookInfoArrayList = gestorDB.getLibros(this.user_id,orden);
 
         //Si no hay ningun libro, mensaje indicando como añadir uno nuevo
         if(bookInfoArrayList.isEmpty()){
@@ -121,13 +125,13 @@ public class fragmentBiblioteca extends Fragment {
             String url = libro.getThumbnail().replace("http", "https");
             Picasso.get().load(url).into(holder.laimagen);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                elListener.seleccionarElemento(libro.getISBN(),libro.getTitle(),libro.getAutores(),libro.getEditorial(),libro.getDescripcion(),libro.getThumbnail(),libro.getPreviewLink());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    elListener.seleccionarElemento(libro.getISBN(),libro.getTitle(),libro.getAutores(),libro.getEditorial(),libro.getDescripcion(),libro.getThumbnail(),libro.getPreviewLink());
+                }
+            });
             }
-        });
-        }
 
         @Override
         public int getItemCount() {

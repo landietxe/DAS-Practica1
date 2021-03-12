@@ -3,11 +3,13 @@ package com.example.practica1.Actividades;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.DialogFragment;
+import androidx.preference.PreferenceManager;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
@@ -15,7 +17,6 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.practica1.DialogoConfirmarBorrar;
@@ -27,7 +28,6 @@ import com.example.practica1.miBD;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.SQLOutput;
 import java.util.Locale;
 
 public class MainActivityBiblioteca extends AppCompatActivity implements fragmentBiblioteca.listenerDelFragment,fragmentInfoLibroBibliotecaLand.listener2,
@@ -36,12 +36,28 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
     private String ISBN;
     private miBD gestorDB;
     private String user_id;
+    private String ordenLibros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String idioma = prefs.getString("idioma","es");
+        String orden = prefs.getString("orden","title");
+        this.ordenLibros=orden;
+
+        Locale nuevaloc = new Locale(idioma);
+        Locale.setDefault(nuevaloc);
+        Configuration configuration = getBaseContext().getResources().getConfiguration();
+        configuration.setLocale(nuevaloc);
+        configuration.setLayoutDirection(nuevaloc);
+
+        Context context = getBaseContext().createConfigurationContext(configuration);
+        getBaseContext().getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
+
         setContentView(R.layout.activity_main_biblioteca);
+
         setSupportActionBar(findViewById(R.id.toolbar));
         gestorDB = new miBD(this, "Libreria", null, 1);
 
@@ -85,27 +101,9 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
                 finish();
                 return true;
             }
-            case R.id.opcion2:{
-                //Idioma seleccionado es
-                cambiarIdioma("es");
-                System.out.println(R.id.opcion2);
-                System.out.println("ES");
-                return true;
-
-            }
-            case R.id.opcion3:{
-                //Idioma seleccionado en
-                cambiarIdioma("en");
-                System.out.println(R.id.opcion3);
-                System.out.println("EN");
-                return true;
-
-            }
-            case R.id.opcion4:{
-                //Idioma seleccionado eu
-                cambiarIdioma("eu");
-                System.out.println("EU");
-                return true;
+            case R.id.opcion2:{//Ajustes
+                Intent intent = new Intent(this, PreferenciasActivity.class);
+                startActivity(intent);
 
             }
 
@@ -113,21 +111,7 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
         return super.onOptionsItemSelected(item);
     }
 
-    public void cambiarIdioma(String idioma){
-        Locale nuevaloc = new Locale(idioma);
-        Locale.setDefault(nuevaloc);
-        Configuration configuration =
-                getBaseContext().getResources().getConfiguration();
-        configuration.setLocale(nuevaloc);
-        configuration.setLayoutDirection(nuevaloc);
 
-        Context context = getBaseContext().createConfigurationContext(configuration);
-        getBaseContext().getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
-
-        finish();
-        startActivity(getIntent());
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

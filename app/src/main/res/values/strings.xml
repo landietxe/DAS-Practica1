@@ -22,4 +22,14 @@
     <string name="notificacionBorrar2">Se ha eliminado el libro de la biblioteca</string>
     <string name="usuario">Usuario:</string>
     <string name="contraseña">Contraseña:</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="seleccionaIdioma">Selecciona tu idioma preferido</string>
+    <string name="idiomaPreferido">¿Cual es tu idioma preferido?</string>
+    <string name="volver">Volver</string>
+    <string name="Guardar">Guardar</string>
+    <string name="ordenLibros">Selecciona como quieres ordenar tus libros</string>
+    <string name="ordenLibros2">¿Como quieres ordenar tus libros?</string>
+    <string name="prefTitulo">Título</string>
+    <string name="prefAutor">Autor</string>
+    <string name="prefEditorial">Editorial</string>
 </resources>
