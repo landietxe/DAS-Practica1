@@ -1,84 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/libro_imagen"
-            android:layout_width="130dp"
-            android:layout_height="160dp"
-            android:layout_margin="10dp" />
+        <TextView
+            android:id="@+id/libro_autor"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/libro_titulo"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/autor"
+            android:ellipsize="end"
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/autor"
+            app:layout_constraintTop_toBottomOf="@+id/libro_titulo" />
+
+        <TextView
+            android:id="@+id/libro_editorial"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/autor"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/editorial"
+            android:ellipsize="end"
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/editorial"
+            app:layout_constraintTop_toBottomOf="@+id/libro_autor" />
 
         <TextView
             android:id="@+id/libro_titulo"
-            android:layout_width="198dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/libro_imagen"
+            android:ellipsize="end"
             android:padding="3dp"
             android:textAlignment="textStart"
             android:textColor="@color/black"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/libro_imagen"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/autor"
-            android:layout_width="45dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/libro_titulo"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/libro_imagen"
             android:padding="3dp"
             android:text="@string/autor"
             android:textColor="@color/black"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/libro_autor"
-            android:layout_width="151dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/libro_titulo"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="12dp"
-            android:layout_toEndOf="@+id/autor"
-            android:padding="3dp"
-            android:textColor="@color/black"
             android:textSize="12sp"
-            />
+            app:layout_constraintStart_toEndOf="@+id/libro_imagen"
+            app:layout_constraintTop_toBottomOf="@+id/libro_titulo" />
 
         <TextView
             android:id="@+id/editorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/libro_autor"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="29dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/libro_imagen"
             android:padding="3dp"
             android:text="@string/editorial"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/libro_imagen"
+            app:layout_constraintTop_toBottomOf="@+id/libro_autor" />
 
-        <TextView
-            android:id="@+id/libro_editorial"
-            android:layout_width="148dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/autor"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/editorial"
-            android:padding="3dp"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
+        <ImageView
+            android:id="@+id/libro_imagen"
+            android:layout_width="130dp"
+            android:layout_height="160dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.039" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

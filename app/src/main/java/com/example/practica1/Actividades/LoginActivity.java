@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
@@ -70,16 +72,17 @@ public class LoginActivity extends AppCompatActivity {
             } catch (IOException e){
 
             }
-
-
-
             Intent intent = new Intent(this,MainActivityBiblioteca.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //intent.putExtra("id",id);
             startActivity(intent);
         }
         else{ //El usuario no existe o la contraseña es incorrecta
-            System.out.println("EL USUARIO NO EXISTE O LA CONTRASEÑA ES INCORRECTA");
+            String mensaje = getString(R.string.ususuarioContraseña);
+            Toast toast = Toast.makeText(this, mensaje, Toast.LENGTH_SHORT);
+            toast.setGravity( Gravity.CENTER_VERTICAL, 0, 0);
+            toast.show();
+
         }
     }
 

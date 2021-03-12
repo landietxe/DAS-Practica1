@@ -4,7 +4,6 @@
     <string name="titulo">Izenburua:</string>
     <string name="editorial">Editoriala:</string>
     <string name="autor">Egilea:</string>
-    <string name="añadir">Liburutegira gehitu</string>
     <string name="info1">Liburua zure liburutegian dago jada.</string>
     <string name="dialog1Text">Liburua zure liburutegira gehitu nahi duzu?</string>
     <string name="Si">Bai</string>
@@ -16,13 +15,13 @@
     <string name="toastNoAñadido">Ez da liburua gorde</string>
     <string name="MiBiblioteca">Nire Liburutegia</string>
     <string name="noLibros">Oraindik ez daukazu libururik zure liburutegian, sakatu Bilatu botoian berri bat gehitzeko</string>
-    <string name="Borrar">Liburua liburutegitik kendu</string>
+    <string name="Borrar">Ezabatu</string>
     <string name="borrarBilbioteca">Liburua zure liburutegitik kendu nahi al duzu?</string>
     <string name="toastNoBorrado">Ez da liburua kendu</string>
     <string name="notificacionBorrar1">Liburua ezabatuta</string>
     <string name="notificacionBorrar2">Liburua liburutegitik ezabatu da</string>
-    <string name="usuario">Erabiltzailea:</string>
-    <string name="contraseña">Pasahitza:</string>
+    <string name="usuario">Erabiltzailea</string>
+    <string name="contraseña">Pasahitza</string>
     <string name="ajustes">Ezarpenak</string>
     <string name="seleccionaIdioma">Aukeratu hizkuntza gogokoena</string>
     <string name="idiomaPreferido">Zein da zure hizkuntza gogokoena?</string>
@@ -33,4 +32,10 @@
     <string name="prefTitulo">Titulua</string>
     <string name="prefAutor">Egilea</string>
     <string name="prefEditorial">Editoriala</string>
+    <string name="Registro">Erregistroa</string>
+    <string name="Registro2">Erregistratu</string>
+    <string name="ususuarioContraseña">Erabiltzailea ez da existitzen edo pasahitza okerra da.</string>
+    <string name="usuarioContraseña2">Sartutako izena duen erabiltzaile bat existitzen da jada</string>
+    <string name="añadir">Gehitu</string>
+    <string name="descripcion">Deskribapena:</string>
 </resources>

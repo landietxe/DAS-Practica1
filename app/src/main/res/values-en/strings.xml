@@ -4,7 +4,7 @@
     <string name="titulo">Title:</string>
     <string name="editorial">Publisher:</string>
     <string name="autor">Author:</string>
-    <string name="añadir">Add to library</string>
+    <string name="añadir">Add</string>
     <string name="info1">The book is already in your library</string>
     <string name="dialog1Text">Do you want to add the book to your library?</string>
     <string name="Si">Yes</string>
@@ -16,13 +16,13 @@
     <string name="toastNoAñadido">The book has not been saved</string>
     <string name="MiBiblioteca">My Library</string>
     <string name="noLibros">You don\'t have any books in your library yet. To add a new one click on Find button</string>
-    <string name="Borrar">Delete book from library</string>
+    <string name="Borrar">Delete</string>
     <string name="borrarBilbioteca">Do you want to delete the book from your library?</string>
     <string name="toastNoBorrado">The book has not been removed</string>
     <string name="notificacionBorrar1">Book removed</string>
     <string name="notificacionBorrar2">The book has been removed from the library</string>
-    <string name="usuario">User:</string>
-    <string name="contraseña">Password:</string>
+    <string name="usuario">User</string>
+    <string name="contraseña">Password</string>
     <string name="ajustes">Settings</string>
     <string name="seleccionaIdioma">Select preferred language</string>
     <string name="idiomaPreferido">What is your preferred language?</string>
@@ -33,4 +33,9 @@
     <string name="prefTitulo">Title</string>
     <string name="prefAutor">Author</string>
     <string name="prefEditorial">Publisher</string>
+    <string name="Registro">Registration</string>
+    <string name="Registro2">Register</string>
+    <string name="ususuarioContraseña">User does not exist or password is incorrect</string>
+    <string name="usuarioContraseña2">A user with that name already exists</string>
+    <string name="descripcion">Description:</string>
 </resources>

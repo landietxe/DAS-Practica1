@@ -68,7 +68,7 @@ public class fragmentBiblioteca extends Fragment {
 
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String orden = prefs.getString("orden","title");
+        String orden = prefs.getString("orden","Titulo");
 
         gestorDB = new miBD (getActivity(), "Libreria", null, 1);
         bookInfoArrayList = gestorDB.getLibros(this.user_id,orden);

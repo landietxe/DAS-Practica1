@@ -17,27 +17,27 @@
     <EditText
         android:id="@+id/editTextLibro"
         android:layout_width="306dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Buscar libro"
         android:inputType="textPersonName"
-        android:text="Metro 2033"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.054" />
 
     <Button
         android:id="@+id/botonBuscar2"
         android:layout_width="99dp"
         android:layout_height="43dp"
-        android:layout_marginTop="20dp"
         android:onClick="onClickBuscar"
         android:text="@string/Buscar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.276"
+        app:layout_constraintHorizontal_bias="0.449"
         app:layout_constraintStart_toEndOf="@+id/editTextLibro"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

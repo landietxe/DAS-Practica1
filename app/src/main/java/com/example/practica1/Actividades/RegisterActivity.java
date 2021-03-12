@@ -49,15 +49,15 @@ public class RegisterActivity extends AppCompatActivity {
         gestorDB = new miBD(this, "Libreria", null, 1);
     }
 
-    public void Registrar(View v){
+    public void onClickRegistrar(View v){
         String user=usuario.getText().toString();
         String password = contraseña.getText().toString();
 
         if(!user.equals("")){
             int id = gestorDB.getUsuario(user,password);
             if(id != -1){ //El usuario existe
-                System.out.println("EL USUARIO EXISTE");
-                Toast toast = Toast.makeText(this, "YA EXISTE UN USUARIO CON EL NOMBRE INTRODUCIDO", Toast.LENGTH_SHORT);
+                String mensaje = getString(R.string.usuarioContraseña2);
+                Toast toast = Toast.makeText(this, mensaje, Toast.LENGTH_SHORT);
                 toast.setGravity( Gravity.CENTER_VERTICAL, 0, 0);
                 toast.show();
             }

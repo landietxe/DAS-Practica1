@@ -3,7 +3,7 @@
     <string name="titulo">Título:</string>
     <string name="editorial">Editorial:</string>
     <string name="autor">Autor:</string>
-    <string name="añadir">Añadir a biblioteca</string>
+    <string name="añadir">Añadir</string>
     <string name="info1">El libro ya se encuentra en tu libreria</string>
     <string name="dialog1Text">¿Deseas añadir el libro a tu biblioteca?</string>
     <string name="Si">Sí</string>
@@ -14,14 +14,14 @@
     <string name="notificacion3">Nuevo libro añadido</string>
     <string name="toastNoAñadido">No se ha guardado el libro</string>
     <string name="MiBiblioteca">Mi Biblioteca</string>
-    <string name="noLibros">Todavía no tienes libros en tu biblioteca, para añadir uno pulsa en Buscar</string>
-    <string name="Borrar">Borrar de biblioteca</string>
+    <string name="noLibros">Todavía no tienes libros en tu biblioteca, para añadir uno pulsa en el icono de la lupa</string>
+    <string name="Borrar">Borrar</string>
     <string name="borrarBilbioteca">¿Deseas borrar el libro de tu biblioteca?</string>
     <string name="toastNoBorrado">No se ha eliminado el libro</string>
     <string name="notificacionBorrar1">Libro eliminado</string>
     <string name="notificacionBorrar2">Se ha eliminado el libro de la biblioteca</string>
-    <string name="usuario">Usuario:</string>
-    <string name="contraseña">Contraseña:</string>
+    <string name="usuario">Usuario</string>
+    <string name="contraseña">Contraseña</string>
     <string name="ajustes">Ajustes</string>
     <string name="seleccionaIdioma">Selecciona tu idioma preferido</string>
     <string name="idiomaPreferido">¿Cual es tu idioma preferido?</string>
@@ -32,4 +32,9 @@
     <string name="prefTitulo">Título</string>
     <string name="prefAutor">Autor</string>
     <string name="prefEditorial">Editorial</string>
+    <string name="Registro">Registro</string>
+    <string name="Registro2">Registrar</string>
+    <string name="ususuarioContraseña">El usuario no existe o la contraseña es incorrecta</string>
+    <string name="usuarioContraseña2">Ya existe un usuario con el nombre introducido</string>
+    <string name="descripcion">Descripción:</string>
 </resources>
