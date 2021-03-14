@@ -11,6 +11,9 @@
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
+        android:drawableStart="@drawable/user_icon"
+        android:drawableLeft="@drawable/user_icon"
+        android:drawablePadding="5dp"
         android:ems="10"
         android:hint="@string/usuario"
         android:inputType="textPersonName"
@@ -20,6 +23,7 @@
 
     <TextView
         android:id="@+id/textView8"
+        style="@style/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -32,6 +36,8 @@
 
     <Button
         android:id="@+id/button4"
+        style="@style/boton"
+        android:background = "@drawable/boton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -44,6 +50,8 @@
 
     <Button
         android:id="@+id/button5"
+        style="@style/boton"
+        android:background = "@drawable/boton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -58,6 +66,9 @@
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:drawableStart="@drawable/password_icon"
+        android:drawableLeft="@drawable/password_icon"
+        android:drawablePadding="5dp"
         android:ems="10"
         android:hint="@string/contraseña"
         android:inputType="textPassword"

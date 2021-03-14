@@ -8,6 +8,8 @@
 
     <Button
         android:id="@+id/botonBuscar"
+        style="@style/boton"
+        android:background = "@drawable/boton"
         android:layout_width="99dp"
         android:layout_height="43dp"
         android:onClick="onClickBuscar"

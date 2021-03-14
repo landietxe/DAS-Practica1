@@ -18,6 +18,8 @@
 
     <Button
         android:id="@+id/botonAñadir2"
+        style="@style/boton"
+        android:background = "@drawable/boton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClickBorrar"
@@ -32,6 +34,8 @@
 
     <Button
         android:id="@+id/button2"
+        style="@style/boton"
+        android:background = "@drawable/boton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClickPreview"
@@ -59,6 +63,7 @@
 
             <TextView
                 android:id="@+id/info_libro_editorial"
+                style="@style/textView"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -68,6 +73,7 @@
 
             <TextView
                 android:id="@+id/info_libro_titulo"
+                style="@style/textView"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -76,6 +82,7 @@
 
             <TextView
                 android:id="@+id/info_libro_descripcion"
+                style="@style/textView"
                 android:layout_width="400dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
@@ -85,6 +92,7 @@
 
             <TextView
                 android:id="@+id/textView5"
+                style="@style/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -95,6 +103,7 @@
 
             <TextView
                 android:id="@+id/textView2"
+                style="@style/textView"
                 android:layout_width="46dp"
                 android:layout_height="21dp"
                 android:layout_marginTop="10dp"
@@ -105,6 +114,7 @@
 
             <TextView
                 android:id="@+id/info_libro_autor"
+                style="@style/textView"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -114,6 +124,7 @@
 
             <TextView
                 android:id="@+id/tvTitulo2"
+                style="@style/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/titulo"
@@ -123,6 +134,7 @@
 
             <TextView
                 android:id="@+id/textView7"
+                style="@style/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

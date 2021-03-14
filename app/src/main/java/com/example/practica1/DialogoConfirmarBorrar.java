@@ -28,7 +28,7 @@ public class DialogoConfirmarBorrar extends DialogFragment {
         String texto= getString(R.string.borrarBilbioteca);
         String si = getString(R.string.Si);
         String no = getString(R.string.No);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogCustom);
         builder.setTitle(titulo);
         builder.setMessage(texto);
 

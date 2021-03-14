@@ -11,6 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
+        android:drawableLeft="@drawable/user_icon"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/user_icon"
         android:ems="10"
         android:hint="@string/usuario"
         android:inputType="textPersonName"
@@ -21,6 +24,7 @@
 
     <TextView
         android:id="@+id/textView8"
+        style="@style/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
@@ -33,11 +37,13 @@
 
     <Button
         android:id="@+id/button5"
+        style="@style/boton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:onClick="onClickRegistrar"
-        android:text="REGISTRO"
+        android:text="@string/Registro2"
+        android:background = "@drawable/boton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
@@ -47,6 +53,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:drawableLeft="@drawable/password_icon"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/password_icon"
         android:ems="10"
         android:hint="@string/contraseña"
         android:inputType="textPassword"

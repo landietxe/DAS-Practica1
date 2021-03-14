@@ -5,7 +5,7 @@
     <item
         android:id="@+id/opcion1"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="Buscar"
+        android:title="@string/Buscar"
         app:showAsAction="ifRoom|withText" />
 
     <item

@@ -22,6 +22,7 @@
 
             <TextView
                 android:id="@+id/tvTitulo"
+                style="@style/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -33,6 +34,7 @@
 
             <TextView
                 android:id="@+id/textView4"
+                style="@style/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -44,6 +46,7 @@
 
             <TextView
                 android:id="@+id/info_libro_descripcion"
+                style="@style/textView"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -53,6 +56,7 @@
 
             <TextView
                 android:id="@+id/info_libro_editorial"
+                style="@style/textView"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -62,6 +66,7 @@
 
             <TextView
                 android:id="@+id/info_libro_autor"
+                style="@style/textView"
                 android:layout_width="250dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
@@ -71,6 +76,7 @@
 
             <TextView
                 android:id="@+id/textView3"
+                style="@style/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -93,6 +99,7 @@
 
             <TextView
                 android:id="@+id/info_libro_titulo"
+                style="@style/textView"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -102,6 +109,7 @@
 
             <TextView
                 android:id="@+id/textView6"
+                style="@style/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -115,6 +123,8 @@
 
     <Button
         android:id="@+id/botonAñadir"
+        style="@style/boton"
+        android:background = "@drawable/boton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClickBorrar"
@@ -129,6 +139,8 @@
 
     <Button
         android:id="@+id/button3"
+        style="@style/boton"
+        android:background = "@drawable/boton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClickPreview"

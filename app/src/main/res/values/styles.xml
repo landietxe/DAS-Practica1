@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="boton">
+        <item name="android:fontFamily">sans-serif-smallcaps</item>
+        <item name="android:textColor">#0C0C0C</item>
+    </style>
+    <style name="textView">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">#272425</item>
+    </style>
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay</item>
+        <!-- Color de botones -->
+        <item name="colorAccent">#425DF6</item>
+        <!-- Color texto y titulo -->
+        <item name="android:textColorPrimary">#FFFBFB</item>
+        <!-- Color fondo -->
+        <item name="android:background">#222020</item>
+        <item name="android:fontFamily">serif-monospace</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

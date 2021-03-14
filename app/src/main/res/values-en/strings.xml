@@ -33,7 +33,7 @@
     <string name="prefTitulo">Title</string>
     <string name="prefAutor">Author</string>
     <string name="prefEditorial">Publisher</string>
-    <string name="Registro">Registration</string>
+    <string name="Registro">REGISTRATION</string>
     <string name="Registro2">Register</string>
     <string name="ususuarioContraseña">User does not exist or password is incorrect</string>
     <string name="usuarioContraseña2">A user with that name already exists</string>

@@ -32,7 +32,7 @@
     <string name="prefTitulo">Título</string>
     <string name="prefAutor">Autor</string>
     <string name="prefEditorial">Editorial</string>
-    <string name="Registro">Registro</string>
+    <string name="Registro">REGISTRO</string>
     <string name="Registro2">Registrar</string>
     <string name="ususuarioContraseña">El usuario no existe o la contraseña es incorrecta</string>
     <string name="usuarioContraseña2">Ya existe un usuario con el nombre introducido</string>
