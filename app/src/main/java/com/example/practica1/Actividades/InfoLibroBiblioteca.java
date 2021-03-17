@@ -21,25 +21,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.practica1.DialogoConfirmarBorrar;
+import com.example.practica1.Dialogos.DialogoConfirmarBorrar;
 import com.example.practica1.R;
-import com.example.practica1.miBD;
+import com.example.practica1.BD.miBD;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Locale;
-
+/*Actividad que muestra la información de un libro seleccionado desde el recyclerview de la clase "MainAcitvityBiblioteca" que
+ contiene los libros añadidos por el usuario. La actividad permite borrar el libro de la biblioteca del usuario o ver su previsualización.
+ */
 public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoConfirmarBorrar.ListenerdelDialogo {
 
+    //Elementos del layout
     private TextView tvTitulo;
     private TextView tvAutor;
     private TextView tvEditorial;
     private TextView tvDescripcion;
     private ImageView imagen;
 
+    //Base de datos
     private miBD gestorDB;
+
+    //Información del libro
     private String ISBN;
     private String titulo;
     private String autor;
@@ -53,6 +59,7 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Obtener preferencias de idioma para actualizar los elementos del layout según el idioma
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String idioma = prefs.getString("idioma","es");
 
@@ -65,17 +72,20 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
         Context context = getBaseContext().createConfigurationContext(configuration);
         getBaseContext().getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
 
-
+        //Establecer la vista "activity_info_libro_biblioteca.xml"
         setContentView(R.layout.activity_info_libro_biblioteca);
 
+        //Obtener la base de datos de la aplicación
         gestorDB = new miBD(this, "Libreria", null, 1);
 
+        //Obtener referencias a los elementos del layout
         tvTitulo = (TextView) findViewById(R.id.info_libro_titulo);
         tvAutor = (TextView) findViewById(R.id.info_libro_autor);
         tvEditorial = (TextView) findViewById(R.id.info_libro_editorial);
         tvDescripcion = (TextView) findViewById(R.id.info_libro_descripcion);
         imagen = (ImageView) findViewById(R.id.info_libro_imagen);
 
+        //Obtener información pasada desde la actividad anterior
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String isbn = extras.getString("isbn");
@@ -98,6 +108,8 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
             this.tvAutor.setText(autor);
             this.tvEditorial.setText(editorial);
             this.tvDescripcion.setText(descripcion);
+
+            //Cargar la imagen
             Picasso.get().load(imagen.replace("http", "https")).into(this.imagen);
 
 
@@ -105,13 +117,20 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
     }
 
     public void onClickBorrar(View v){
+        /*Método que se ejecuta cuando el usuario pulsa el botón de borrar el libro de su biblioteca.
+        Se abrirá un diálogo de la clase "DialogoConfirmarBorrar" para que el usuario confirme si quiere borrar el libro.*/
         DialogFragment dialogoalerta= new DialogoConfirmarBorrar();
         dialogoalerta.show(getSupportFragmentManager(), "etiqueta");
     }
 
     @Override
     public void alpulsarSI() {
+        /*Método que se ejecuta cuando el usuario pulsa el botoón "Sí" en el dialogo de borrar el libro
+        de su biblioteca. Por un lado, se lee del fichero "usuario_actual.txt" cual es el identificador del usuario actual. Con ese identificador,
+        se llama al método "borrarUsuarioLibro" de la base de datos para quitar el libro al usuario. Después se abre una notificación
+        indicando que el libro ha sido borrado. Por último, se vuelve a abrir la actividad "MainActivityBiblioteca".*/
 
+        //Obtener identificador del usuario actual
         try {
             BufferedReader ficherointerno = new BufferedReader(new InputStreamReader(openFileInput("usuario_actual.txt")));
             String linea = ficherointerno.readLine();
@@ -121,7 +140,9 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
             e.printStackTrace();
         }
 
+        //Quitar libro a usuario
         gestorDB.borrarUsuarioLibro(this.ISBN,this.user_id);
+
         //Crear notificación indicando que se ha eliminado el libro de la biblioteca
         NotificationManager elManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder elBuilder = new NotificationCompat.Builder(this, "IdCanal");
@@ -151,11 +172,18 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
 
         elManager.notify(1, elBuilder.build());
 
+        //Abrir actividad "MainActivityBiblioteca"
+        Intent newIntent = new Intent(this, MainActivityBiblioteca.class);
+        startActivity(newIntent);
+        finish();
+
 
     }
 
     @Override
     public void alpulsarNO() {
+        /* Método que se ejecuta cuando el usuario pulsa el bóton "No" en el diálogo de borrar el libro
+        de su biblioteca. Se abrirá un Toast indicando que el libro no se ha borrado.*/
         String mensaje = getString(R.string.toastNoBorrado);
         Toast toast = Toast.makeText(this, mensaje, Toast.LENGTH_SHORT);
         toast.setGravity( Gravity.CENTER_VERTICAL, 0, 0);
@@ -164,6 +192,9 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
     }
     @Override
     public void onBackPressed(){
+        /*Método que se ejecuta cuando el usuario pulsa el bóton del móvil para volver hacia atras.
+          El método abrirá la actividad anterior a la actual, en este caso, MainActivityBiblioteca y finalizará la
+          actividad actual.*/
         Context context = getApplicationContext();
         Intent newIntent = new Intent(context, MainActivityBiblioteca.class);
         newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -172,6 +203,8 @@ public class InfoLibroBiblioteca extends AppCompatActivity implements DialogoCon
     }
 
     public void onClickPreview(View v){
+        /*Método que se ejecuta cuando el usuario pulsa el botón de previsualizar el libro.
+        Este método abre un intent implícito que muestra en el navegador una previsualización del libro.*/
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(this.preview));
         startActivity(i);
     }

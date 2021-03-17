@@ -13,7 +13,7 @@
     <string name="notificacion2">Liburu berri bat gehitu da liburutegira</string>
     <string name="notificacion3">Liburu berria gehituta</string>
     <string name="toastNoAñadido">Ez da liburua gorde</string>
-    <string name="MiBiblioteca">Nire Liburutegia</string>
+    <string name="MiBiblioteca">NIRE LIBURUTEGIA</string>
     <string name="noLibros">Oraindik ez daukazu libururik zure liburutegian, sakatu Bilatu botoian berri bat gehitzeko</string>
     <string name="Borrar">Ezabatu</string>
     <string name="borrarBilbioteca">Liburua zure liburutegitik kendu nahi al duzu?</string>
@@ -38,4 +38,6 @@
     <string name="usuarioContraseña2">Sartutako izena duen erabiltzaile bat existitzen da jada</string>
     <string name="añadir">Gehitu</string>
     <string name="descripcion">Deskribapena:</string>
+    <string name="errorBusqueda">Bilaketa ezin izan da burutu.</string>
+    <string name="buscarLibro">LBURUAK BILATU</string>
 </resources>

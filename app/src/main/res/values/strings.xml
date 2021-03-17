@@ -13,7 +13,7 @@
     <string name="notificacion2">Se ha añadido un nuevo libro a la biblioteca</string>
     <string name="notificacion3">Nuevo libro añadido</string>
     <string name="toastNoAñadido">No se ha guardado el libro</string>
-    <string name="MiBiblioteca">Mi Biblioteca</string>
+    <string name="MiBiblioteca">MI BIBLIOTECA</string>
     <string name="noLibros">Todavía no tienes libros en tu biblioteca, para añadir uno pulsa en el icono de la lupa</string>
     <string name="Borrar">Borrar</string>
     <string name="borrarBilbioteca">¿Deseas borrar el libro de tu biblioteca?</string>
@@ -37,4 +37,6 @@
     <string name="ususuarioContraseña">El usuario no existe o la contraseña es incorrecta</string>
     <string name="usuarioContraseña2">Ya existe un usuario con el nombre introducido</string>
     <string name="descripcion">Descripción:</string>
+    <string name="errorBusqueda">No se ha podido completar la búsqueda</string>
+    <string name="buscarLibro">BUSCAR LIBROS</string>
 </resources>

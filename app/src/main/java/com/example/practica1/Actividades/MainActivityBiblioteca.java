@@ -19,17 +19,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.practica1.DialogoConfirmarBorrar;
+import com.example.practica1.Dialogos.DialogoConfirmarBorrar;
 import com.example.practica1.Fragments.fragmentBiblioteca;
 import com.example.practica1.Fragments.fragmentInfoLibroBibliotecaLand;
 import com.example.practica1.R;
-import com.example.practica1.miBD;
+import com.example.practica1.BD.miBD;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Locale;
 
+/*Actividad que muestra los libros que el usuario tenga añadidos en su biblioteca. Esta actividad está compuesta de fragments
+* para tener un comportamiento diferente según la orientación en la que se encuentre el móvil*/
 public class MainActivityBiblioteca extends AppCompatActivity implements fragmentBiblioteca.listenerDelFragment,fragmentInfoLibroBibliotecaLand.listener2,
         DialogoConfirmarBorrar.ListenerdelDialogo{
 
@@ -42,9 +44,11 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        /*Obtener preferencias de idioma para actualizar los elementos del layout según el idioma y el orden
+        en el que se quiere ordenar los libros*/
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String idioma = prefs.getString("idioma","es");
-        String orden = prefs.getString("orden","title");
+        String idioma = prefs.getString("idioma","es"); //Idioma
+        String orden = prefs.getString("orden","title"); //Orden
         this.ordenLibros=orden;
 
         Locale nuevaloc = new Locale(idioma);
@@ -56,26 +60,31 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
         Context context = getBaseContext().createConfigurationContext(configuration);
         getBaseContext().getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
 
+        //Establecer la vista "activity_main_biblioteca.xml"
         setContentView(R.layout.activity_main_biblioteca);
 
+        //Añadir toolbar al layout
         setSupportActionBar(findViewById(R.id.toolbar));
+
+        //Obtener la base de datos de la aplicación
         gestorDB = new miBD(this, "Libreria", null, 1);
 
     }
 
     @Override
     public void seleccionarElemento(String isbn, String title, String autores, String editorial, String descripcion, String thumbnail, String previewLink) {
+        /*Método que se ejecuta cuando el usuario selecciona uno de sus libros. Por un lado se comprueba la orientación en la que
+        se encuentra el móvil. Si el móvil está en vertical, se abrirá la actividad "InfoLibroBiblioteca" pasandole los datos del libro.
+        Si el móvil está en horizontal, ya existe otro fragment en el layout, por lo que se hace cast a su clase y se llama al método
+        "actualizar" para visualizar los datos.*/
         this.ISBN=isbn;
         int orientation = getResources().getConfiguration().orientation;
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE){ //Pantalla en horizontal
-            System.out.println(title);
-            //EL OTRO FRAGMENT EXISTE
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE){ //Pantalla en horizontal, usamos el otro fragment
             fragmentInfoLibroBibliotecaLand elotro=(fragmentInfoLibroBibliotecaLand) getSupportFragmentManager().findFragmentById(R.id.fragment4);
             elotro.actualizar(isbn,title,autores,editorial,descripcion,previewLink);
 
         }
         else{ //Pantalla en vertical, abrimos nueva actividad
-            //EL OTRO FRAGMENT NO EXISTE, HAY QUE LANZAR LA ACTIVIDAD QUE LO CONTIENE
             Intent i= new Intent(this,InfoLibroBiblioteca.class);
             i.putExtra("isbn",isbn);
             i.putExtra("titulo", title);
@@ -91,9 +100,10 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //Método que se ejecuta cuando se pulsa alguno de los botones de la Toolbar.
         int id=item.getItemId();
         switch (id){
-            case R.id.opcion1:{
+            case R.id.opcion1:{  //Botón buscar, abrirá la actividad "MainActivity"
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("id",this.user_id);
@@ -101,7 +111,7 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
                 finish();
                 return true;
             }
-            case R.id.opcion2:{//Ajustes
+            case R.id.opcion2:{//Boton Ajustes,abrirá la actividad "PreferenciasActivity"
                 Intent intent = new Intent(this, PreferenciasActivity.class);
                 startActivity(intent);
 
@@ -115,6 +125,7 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //Asignar el fichero xml con la definición del menú a la Toolbar
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
     }
@@ -122,14 +133,21 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
 
     @Override
     public void seleccionarElemento() {
-        System.out.println("HAS CLICKADO EN BORRAR");
+        /*Método implementado del listener de fragmentInfoBibliotecaLand"
+        El método se ejecutará cuando el usuario pulse el botón de borrar el libro cuando tenga el móvil en orientación
+        horizontal y abrirá un diálogo de la clase "DialogoConfirmarBorrar"*/
         DialogFragment dialogoalerta= new DialogoConfirmarBorrar();
         dialogoalerta.show(getSupportFragmentManager(), "etiqueta");
     }
 
     @Override
     public void alpulsarSI() {
+        /*Método que se ejecuta cuando el usuario pulsa el botoón "Sí" en el dialogo de borrar el libro
+        de su biblioteca. Por un lado, se lee del fichero "usuario_actual.txt" cual es el identificador del usuario actual. Con ese identificador,
+        se llama al método "borrarUsuarioLibro" de la base de datos para quitar el libro al usuario. Después se abre una notificación
+        indicando que el libro ha sido borrado. Por último, se recarga la actividad.*/
 
+        //Obtener identificador del usuario actual
         try {
             BufferedReader ficherointerno = new BufferedReader(new InputStreamReader(openFileInput("usuario_actual.txt")));
             String linea = ficherointerno.readLine();
@@ -139,7 +157,9 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
             e.printStackTrace();
         }
 
+        //Quitar libro a usuario
         gestorDB.borrarUsuarioLibro(this.ISBN,this.user_id);
+
         //Crear notificación indicando que se ha eliminado el libro de la biblioteca
         NotificationManager elManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder elBuilder = new NotificationCompat.Builder(this, "IdCanal");
@@ -169,6 +189,7 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
 
         elManager.notify(1, elBuilder.build());
 
+        //Recargar la actividad
         Intent intent = getIntent();
         finish();
         startActivity(intent);
@@ -178,7 +199,8 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
 
     @Override
     public void alpulsarNO() {
-        System.out.println("HA PULSADO QUE NO");
+        /* Método que se ejecuta cuando el usuario pulsa el bóton "No" en el diálogo de borrar el libro
+        de su biblioteca. Se abrirá un Toast indicando que el libro no se ha borrado.*/
         String mensaje = getString(R.string.toastNoBorrado);
         Toast toast = Toast.makeText(this, mensaje, Toast.LENGTH_SHORT);
         toast.setGravity( Gravity.CENTER_VERTICAL, 0, 0);
@@ -188,6 +210,9 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
 
     @Override
     public void onBackPressed(){
+        /*Método que se ejecuta cuando el usuario pulsa el bóton del móvil para volver hacia atras.
+          El método abrirá la actividad anterior a la actual, en este caso, "LoginActivity" y finalizará la
+          actividad actual.*/
         Context context = getApplicationContext();
         Intent newIntent = new Intent(context, LoginActivity.class);
         newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

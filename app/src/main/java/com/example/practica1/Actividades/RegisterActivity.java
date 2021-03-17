@@ -14,10 +14,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.practica1.R;
-import com.example.practica1.miBD;
+import com.example.practica1.BD.miBD;
 
 import java.util.Locale;
 
+/*Actividad que permite al usuario registrarse en la aplicación con un nombre de usuario
+    y una contraseña.*/
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText usuario;
@@ -28,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        //Obtener preferencias de idioma para actualizar los elementos del layout según el idioma
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String idioma = prefs.getString("idioma","es");
 
@@ -41,15 +43,20 @@ public class RegisterActivity extends AppCompatActivity {
         Context context = getBaseContext().createConfigurationContext(configuration);
         getBaseContext().getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
 
-
+        //Establecer la vista "activity_register.xml"
         setContentView(R.layout.activity_register);
 
+        //Obtener referencias a los elementos del layout
         usuario = (EditText)findViewById(R.id.editTextUsuario);
         contraseña = (EditText) findViewById(R.id.editTextTextPassword);
         gestorDB = new miBD(this, "Libreria", null, 1);
     }
 
     public void onClickRegistrar(View v){
+        /*Método que se ejecuta cuando el usuario pulsa el botón de registrarse.
+        Este método en primer lugar comprueba si ya existe un usuario con el nombre y contraseña introducidos.
+        Si ya existe, se muestra un Toast indicándolo. En caso contrario, se añade el usuario a la base de datos
+        utilizando el método "insertarUsuario" definido en la clase "miBD".*/
         String user=usuario.getText().toString();
         String password = contraseña.getText().toString();
 
