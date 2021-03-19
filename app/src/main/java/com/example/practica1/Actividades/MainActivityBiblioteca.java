@@ -1,6 +1,7 @@
 package com.example.practica1.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceManager;
@@ -18,6 +19,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 
 import com.example.practica1.Dialogos.DialogoConfirmarBorrar;
 import com.example.practica1.Fragments.fragmentBiblioteca;
@@ -39,6 +41,8 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
     private miBD gestorDB;
     private String user_id;
     private String ordenLibros;
+    private Toolbar toolbar;
+    private String nombreUsuario="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +67,21 @@ public class MainActivityBiblioteca extends AppCompatActivity implements fragmen
         //Establecer la vista "activity_main_biblioteca.xml"
         setContentView(R.layout.activity_main_biblioteca);
 
+        //Obtener nombre del Usuario
+        try {
+            BufferedReader ficherointerno = new BufferedReader(new InputStreamReader(openFileInput("usuario_actual.txt")));
+            ficherointerno.readLine();
+            String linea = ficherointerno.readLine();
+            this.nombreUsuario= linea.split(":")[1];
+            ficherointerno.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         //Añadir toolbar al layout
-        setSupportActionBar(findViewById(R.id.toolbar));
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(this.nombreUsuario);
+        setSupportActionBar(toolbar);
 
         //Obtener la base de datos de la aplicación
         gestorDB = new miBD(this, "Libreria", null, 1);

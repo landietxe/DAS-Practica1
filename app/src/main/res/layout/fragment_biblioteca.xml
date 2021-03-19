@@ -36,7 +36,7 @@
 
     <TextView
         android:id="@+id/textView"
-        style="@style/textView"
+        style="@style/textViewTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -52,7 +52,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="#C8CAB8"
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"

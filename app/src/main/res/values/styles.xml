@@ -2,10 +2,14 @@
 <resources>
     <style name="boton">
         <item name="android:fontFamily">sans-serif-smallcaps</item>
-        <item name="android:textColor">#0C0C0C</item>
+        <item name="android:textColor">#F1EEEE</item>
     </style>
     <style name="textView">
-        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">#272425</item>
+    </style>
+    <style name="textViewTitulo">
+        <item name="android:fontFamily"> sans-serif-black</item>
         <item name="android:textColor">#272425</item>
     </style>
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
@@ -18,5 +22,8 @@
         <item name="android:background">#222020</item>
         <item name="android:fontFamily">serif-monospace</item>
         <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TemaDAS" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/color_fondo</item>
     </style>
 </resources>

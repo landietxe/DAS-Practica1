@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/textView8"
-        style="@style/textView"
+        style="@style/textViewTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
