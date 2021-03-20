@@ -152,7 +152,7 @@
         android:layout_marginBottom="15dp"
         android:background="@drawable/boton"
         android:onClick="onClickPreview"
-        android:text="Peview"
+        android:text="PREVIEW"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"

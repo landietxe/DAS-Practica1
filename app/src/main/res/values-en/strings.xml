@@ -41,4 +41,5 @@
     <string name="errorBusqueda">The search could not be completed</string>
     <string name="buscarLibro">FIND BOOKS</string>
     <string name="hintBusqueda">Title, author...</string>
+    <string name="previsualizar">PREVIEW</string>
 </resources>

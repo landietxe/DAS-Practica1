@@ -41,4 +41,5 @@
     <string name="errorBusqueda">Bilaketa ezin izan da burutu.</string>
     <string name="buscarLibro">LBURUAK BILATU</string>
     <string name="hintBusqueda">Titulua, egilea...</string>
+    <string name="previsualizar">IKUSI</string>
 </resources>
